@@ -1,0 +1,37 @@
+login:
+    path: /user/login
+
+gesdinet_jwt_refresh_token:
+    path: /user/token/refresh
+    controller: gesdinet.jwtrefreshtoken::refresh
+    methods: POST
+
+register:
+    path: /user/register
+    controller: App\Controller\Auth\AuthController::register
+    methods: POST
+
+logout:
+    path: /user/logout
+    controller: App\Controller\Auth\AuthController::logout
+    methods: PUT
+
+index:
+    path: /persons/index
+    controller: App\Controller\Person\PersonController::index
+    methods: GET
+
+create:
+    path: /persons/create
+    controller: App\Controller\Person\PersonController::create
+    methods: POST
+
+update:
+    path: /persons/update/{id}
+    controller: App\Controller\Person\PersonController::update
+    methods: PUT
+
+delete:
+    path: /persons/delete/{ids}
+    controller: App\Controller\Person\PersonController::delete
+    methods: DELETE

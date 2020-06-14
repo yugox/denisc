@@ -1,0 +1,23 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    Predis\Client:
+        class: 'Predis\Client'
+        arguments:
+            $parameters:
+                host: '%env(REDIS_HOST)%'
+                port: '%env(REDIS_PORT)%'
+                password: '%env(REDIS_PASSWORD)%'
+        public: true
